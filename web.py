@@ -1,12 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
-from flask import render_template
-
 @app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=name)
+#@app.route('/hello/Ethan')
+def hello():
+    return render_template('render_template.html', name='Ethan')
 #@app.route('/')
 #def hello_world():
 #    return 'Hello, World!'
