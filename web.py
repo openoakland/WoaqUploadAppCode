@@ -6,6 +6,7 @@ app = Flask(__name__)
 def send():
     if request.method == 'POST':
         age = request.form['age']
+        
         return render_template('age.html',age=age)
     return render_template('index.html')
         
