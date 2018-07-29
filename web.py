@@ -1,11 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route('/')
-#@app.route('/hello/Ethan')
-def hello():
-    name2 = 'Ethan'
-    return render_template('index.html', name=name2)
-#@app.route('/')
-#def hello_world():
-#    return 'Hello, World!'
+@app.route('/send',methods=['GET','POST'])
+
+def send():
+    if request.method == 'POST':
+        age = request.form['age']
+        return render_template('age.html',age=age)
+    return render_template('index.html')
+        
