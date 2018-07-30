@@ -33,6 +33,8 @@ def upload():
         elif filetype == 'log':
             logFile = filetype
     if csvFile != '' and logFile != '':
+        print(csvFile)
+        print(logFile)
         finalFile = 'JoinedFile.csv'
         joiner = AqGpsJoiner(csvFile, logFile, finalFile, tdiff_tolerance_secs=1, filter_size='10')
         joiner.createFile()
