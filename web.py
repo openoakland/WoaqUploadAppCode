@@ -20,7 +20,8 @@ def upload():
     #For each file in the list,     
     for file in request.files.getlist("file"):
         print(file)
-        filetype = file.filetype
+        filetype = magic.from_file(file)
+        print(filetype)
         filename = file.filename
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
