@@ -34,7 +34,7 @@ def upload():
         file.save(destination)
         
     #Load Complete page
-    return render_template("complete.html")
+    return render_template("complete.html", filetype=filetype)
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
