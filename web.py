@@ -1,12 +1,32 @@
+import os
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route('/send',methods=['GET','POST'])
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-def send():
-    if request.method == 'POST':
-        age = request.form['age']
-        
-        return render_template('age.html',age=age)
-    return render_template('index.html')
+@app.route('/')
+def index():
+    return render_template("upload.html")
+
+@app.route("/upload", methods=['POST'])
+def upload():
+    #Where to put images
+    target = os.path.join(APP_ROOT,'images/')
+    print(target)
+    
+    if not os.path.isdir(target):
+        os.mkdir(target)
+    #For each file in the list,     
+    for file in request.files.getlist("file"):
+        print(file)
+        filename = file.filename
+        #Adding the filename to the images folder
+        destination = "/".join([target, filename])
+        print(destination)
+        file.save(destination)
+    #Load Complete page
+    return render_template("complete.html")
+
+if __name__ == "__main__":
+    app.run(port=4555, debug=True)
         
