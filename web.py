@@ -1,6 +1,8 @@
 import os
 import magic
 from flask import Flask, render_template, request
+from joiner_scripts.joiner import AqGpsJoiner
+
 app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -11,6 +13,8 @@ def index():
 
 @app.route("/upload", methods=['POST'])
 def upload():
+    csvFile = ''
+    logFile = ''
     #Where to put images
     target = os.path.join(APP_ROOT,'files/')
     print(target)
@@ -28,10 +32,18 @@ def upload():
             csvFile = filetype
         elif filetype == 'log':
             logFile = filetype
+    if csvFile != '' and logFile != '':
+        finalFile = 'JoinedFile.csv'
+        joiner = AqGpsJoiner(csvFile, logFile, finalFile, tdiff_tolerance_secs=1, filter_size='10')
+        joiner.createFile()
+        filename = finalFile.filename
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
         file.save(destination)
+
+    
+
         
     #Load Complete page
     return render_template("complete.html", filetype=filetype)
