@@ -23,10 +23,10 @@ def upload():
         #print(filetype)
         filename = file.filename
         filetype = filename.split('.')[1]
-        if filetype = 'csv':
+        if filetype == 'csv':
             print('filetype is csv')
             csvFile = filetype
-        elif filetype = 'log':
+        elif filetype == 'log':
             logFile = filetype
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
