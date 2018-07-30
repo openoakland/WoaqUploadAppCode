@@ -20,13 +20,16 @@ def upload():
     #For each file in the list,     
     for file in request.files.getlist("file"):
         print(file)
-        filetype = magic.from_file(file)
-        print(filetype)
+        #filetype = magic.from_file(file)
+        #print(filetype)
         filename = file.filename
+        #if filetype = '':
+            
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
         file.save(destination)
+        
     #Load Complete page
     return render_template("complete.html")
 
