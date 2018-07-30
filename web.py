@@ -29,9 +29,9 @@ def upload():
         filetype = filename.split('.')[1]
         if filetype == 'csv':
             print('filetype is csv')
-            csvFile = filetype
+            csvFile = file
         elif filetype == 'log':
-            logFile = filetype
+            logFile = file
     if csvFile != '' and logFile != '':
         print(csvFile)
         print(logFile)
