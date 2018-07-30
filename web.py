@@ -11,7 +11,7 @@ def index():
 @app.route("/upload", methods=['POST'])
 def upload():
     #Where to put images
-    target = os.path.join(APP_ROOT,'images/')
+    target = os.path.join(APP_ROOT,'files/')
     print(target)
     
     if not os.path.isdir(target):
@@ -20,7 +20,7 @@ def upload():
     for file in request.files.getlist("file"):
         print(file)
         filename = file.filename
-        #Adding the filename to the images folder
+        #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
         file.save(destination)
