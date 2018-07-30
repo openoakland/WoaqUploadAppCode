@@ -20,7 +20,7 @@ def upload():
     #For each file in the list,     
     for file in request.files.getlist("file"):
         print(file)
-        #filetype = magic.from_file(file)
+        filetype = magic.from_file(file)
         #print(filetype)
         filename = file.filename
         #if filetype = '':
