@@ -32,7 +32,8 @@ def upload():
             csvFile = file
         elif filetype == 'log':
             logFile = file
-    """if csvFile != '' and logFile != '':
+    #Currently problem with processing csvFile in metadata lines
+    if csvFile != '' and logFile != '':
         print(csvFile)
         print(logFile)
         finalFile = 'JoinedFile.csv'
@@ -42,7 +43,7 @@ def upload():
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
-        file.save(destination)"""
+        file.save(destination)
 
     
 
