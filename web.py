@@ -1,4 +1,5 @@
 import os
+import magic
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def upload():
     #For each file in the list,     
     for file in request.files.getlist("file"):
         print(file)
+        filetype = file.filetype
         filename = file.filename
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
