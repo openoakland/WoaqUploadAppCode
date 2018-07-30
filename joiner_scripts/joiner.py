@@ -91,7 +91,7 @@ class AqGpsJoiner:
     def meta_generate(metadata_lines):
         _metadata = {}
         for ml in metadata_lines:
-            sp = ml.decode().split(',')
+            sp = ml.split(',')
             attribute = sp[0].strip()
             value = sp[1].strip()
             _metadata[attribute] = value

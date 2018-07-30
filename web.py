@@ -1,5 +1,4 @@
 import os
-import magic
 from flask import Flask, render_template, request
 from joiner_scripts.joiner import AqGpsJoiner
 
