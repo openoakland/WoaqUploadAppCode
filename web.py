@@ -32,7 +32,7 @@ def upload():
             csvFile = file
         elif filetype == 'log':
             logFile = file
-    if csvFile != '' and logFile != '':
+    """if csvFile != '' and logFile != '':
         print(csvFile)
         print(logFile)
         finalFile = 'JoinedFile.csv'
@@ -42,13 +42,13 @@ def upload():
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
-        file.save(destination)
+        file.save(destination)"""
 
     
 
         
     #Load Complete page
-    return render_template("complete.html", filetype=filetype)
+    return render_template("complete.html", filetype=filetype, file2=csvFile)
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
