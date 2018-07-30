@@ -29,18 +29,8 @@ def upload():
         if filetype == 'csv':
             print('filetype is csv')
             csvFile = file
-            #Adding the filename to the files folder
-            destination = "/".join([target, filename])
-            print(destination)
-            csvFile = file.save(destination)
         elif filetype == 'log':
             logFile = file
-            #Adding the filename to the files folder
-            destination = "/".join([target, filename])
-            print(destination)
-            logFile = file.save(destination)
-    
-
     if csvFile != '' and logFile != '':
         print(csvFile)
         print(logFile)
@@ -48,7 +38,11 @@ def upload():
         joiner = AqGpsJoiner(csvFile, logFile, finalFile, tdiff_tolerance_secs=1, filter_size='10')
         joiner.createFile()
         filename = finalFile.filename
-        
+        #Adding the filename to the files folder
+        destination = "/".join([target, filename])
+        print(destination)
+        file.save(destination)
+
     
 
         
