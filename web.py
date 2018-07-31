@@ -36,7 +36,7 @@ def upload():
         print(logFile)
         finalFile = 'JoinedFile.csv'
         f = open(finalFile,"w+")
-        f.close()
+        #f.close()
         #finalFileaddress = open(finalFile,"w")
         joiner = AqGpsJoiner(csvFile, logFile, f, tdiff_tolerance_secs=1, filter_size='10')
         joiner.createFile()
