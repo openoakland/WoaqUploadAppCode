@@ -44,7 +44,7 @@ def upload():
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
-        
+        file.close()
         file.save(destination)
 
     
