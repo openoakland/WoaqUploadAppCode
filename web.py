@@ -45,7 +45,8 @@ def upload():
         destination = "/".join([target, filename])
         print(destination)
         file.close()
-        file.save(destination)
+        with open(file,'r') as fi:
+            fi.save(destination)
 
     
 
