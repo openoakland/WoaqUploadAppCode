@@ -9,7 +9,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 @app.route('/')
 def index():
     return render_template("upload.html")
-
+#Runs once file is uploaded
 @app.route("/upload", methods=['POST'])
 def upload():
     csvFile = ''
@@ -17,13 +17,14 @@ def upload():
     #Folder where files are put
     target = os.path.join(APP_ROOT,'files/')
     print(target)
-    
+    #If the directory does not exist, make it
     if not os.path.isdir(target):
         os.mkdir(target)
     #For each file in the list,     
     for file in request.files.getlist("file"):
         print(file)
         #print(filetype)
+        #Checks whether file is a csv or log
         filename = file.filename
         filetype = filename.split('.')[1]
         if filetype == 'csv':
@@ -46,6 +47,7 @@ def upload():
         destination = "/".join([target, filename])
         print(destination)
         f.close()
+        #Saves file
         with open(f,'r') as fi:
             fi.save(destination)   
     #Load Complete page
