@@ -193,7 +193,8 @@ class AqGpsJoiner:
         #Creates joined_file:"""
         a = aq_file
         g = gps_file
-        with open(output_file, 'wb') as o:
+        o = output_file
+        #with open(output_file, 'wb') as o:
             o.writelines("%s\n" % l for l in self)
         
         self.created = True
