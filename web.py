@@ -60,10 +60,9 @@ def upload():
         mD = open(markDownFile,"w+")
         mD.write('--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+str(now.month)+'\nyear: '+str(now.year)+'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---')
         mD.close()
-
-
-        mDtemp = FileStorage(markDownFile)
-        mDtemp.save(destination)
+        with open(markDownFile,'r') as fz:
+            fk = FileStorage(fz)
+            fk.save(destination)
 
         #Saves file
         filename = finalFile
