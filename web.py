@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request
+from werkzeug.datastructures import FileStorage
 from joiner_scripts.joiner import AqGpsJoiner
 
 app = Flask(__name__)
