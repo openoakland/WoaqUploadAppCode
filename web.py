@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 from werkzeug.datastructures import FileStorage
 from joiner_scripts.joiner import AqGpsJoiner
+import datetime
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ def index():
 #Runs once file is uploaded
 @app.route("/upload", methods=['POST'])
 def upload():
+    now = datetime.datetime.now()
     csvFile = ''
     logFile = ''
     #Folder where files are put
@@ -36,25 +38,46 @@ def upload():
     if csvFile != '' and logFile != '':
         print(csvFile)
         print(logFile)
-        finalFile = 'JoinedFile.csv'
+        #Creates a file 
+        finalFile = 'JoinedAirQualityAndGPSData'+str(now)+'.csv'
         f = open(finalFile,"w+")
         f.close()
         #finalFileaddress = open(finalFile,"w")
         joiner = AqGpsJoiner(csvFile, logFile, finalFile, tdiff_tolerance_secs=1, filter_size='10')
         #f.close()
         joiner.createFile()
+        
+
+        #Creates a markdown file and saves it
+        markDownFile =  now.year+now.month+now.day+now.hour+now.minute'.markdown'
+
+        filename = markDownFile
+        #Adding the filename to the files folder
+        destination = "/".join([target, filename])
+        print(destination)
+        f.close()
+
+        mD = open(markDownFile,"w+")
+        mD.write('--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+now.month+'\nyear: '+now.year'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---')
+        mD.close()
+
+
+        mDtemp = FileStorage(markDownFile)
+        mDtemp.save(destination)
+
+        #Saves file
         filename = finalFile
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
         f.close()
-        #Saves file
+
         with open(finalFile,'r') as fj:
             fi = FileStorage(fj)
             fi.save(destination)
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
-    return render_template("complete.html", filetype=filetype, file2=finalFile)
+    return render_template("complete.html")
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
