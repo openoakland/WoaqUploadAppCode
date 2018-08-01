@@ -49,10 +49,9 @@ def upload():
         print(destination)
         #f.close()
         #Saves file
-        #with open(f,'r') as fi:
-        fi = FileStorage(f)
-        fi.open()
-        fi.save(destination)   
+        with open(f,'r') as fj:
+            fi = FileStorage(fj)
+            fi.save(destination)   
     #Load Complete page
     return render_template("complete.html", filetype=filetype, file2=csvFile)
 
