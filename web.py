@@ -49,9 +49,10 @@ def upload():
         print(destination)
         f.close()
         #Saves file
-        with open(f,'r') as fj:
+        with open(finalFile,'r') as fj:
             fi = FileStorage(fj)
-            fi.save(destination)   
+            fi.save(destination)
+        GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
     return render_template("complete.html", filetype=filetype, file2=csvFile)
 
