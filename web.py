@@ -58,7 +58,7 @@ def upload():
         f.close()
 
         mD = open(markDownFile,"w+")
-        mD.write('--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+now.month+'\nyear: '+now.year'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---')
+        mD.write('--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+now.month+'\nyear: '+now.year+'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---')
         mD.close()
 
 
