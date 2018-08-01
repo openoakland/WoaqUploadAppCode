@@ -47,7 +47,7 @@ def upload():
         #Adding the filename to the files folder
         destination = "/".join([target, filename])
         print(destination)
-        #f.close()
+        f.close()
         #Saves file
         with open(f,'r') as fj:
             fi = FileStorage(fj)
