@@ -49,7 +49,7 @@ def upload():
         f.close()
         #Saves file
         #with open(f,'r') as fi:
-        finalFile.save(destination)   
+        f.save(destination)   
     #Load Complete page
     return render_template("complete.html", filetype=filetype, file2=csvFile)
 
