@@ -49,7 +49,7 @@ def upload():
         
 
         #Creates a markdown file and saves it
-        markDownFile =  now.year+now.month+now.day+now.hour+now.minute'.markdown'
+        markDownFile =  now.year+now.month+now.day+now.hour+now.minute+'.markdown'
 
         filename = markDownFile
         #Adding the filename to the files folder
