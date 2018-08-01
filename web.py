@@ -54,7 +54,7 @@ def upload():
             fi.save(destination)
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
-    return render_template("complete.html", filetype=filetype, file2=csvFile)
+    return render_template("complete.html", filetype=filetype, file2=finalFile)
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
