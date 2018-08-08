@@ -36,6 +36,7 @@ def upload():
             csvFile = file
         elif filetype == 'log':
             logFile = file
+
     if csvFile != '' and logFile != '':
         print(csvFile)
         print(logFile)
@@ -44,11 +45,12 @@ def upload():
         f = open(finalFile,"w+")
         f.close()
         #finalFileaddress = open(finalFile,"w")
-        joiner = AqGpsJoiner(csvFile, logFile, finalFile, tdiff_tolerance_secs=1, filter_size='10')
-        #f.close()
-        joiner.createFile()
-        
-
+        try:
+            joiner = AqGpsJoiner(csvFile, logFile, finalFile, tdiff_tolerance_secs=1, filter_size='2.5')
+            #f.close()
+            joiner.createFile()
+        except Exception as e:
+            return render_template("WrongFileFormat.html")
         #Creates a markdown file and saves it
         markDownFile =  str(now)+'.markdown'
 
@@ -90,7 +92,9 @@ def upload():
             fi.save(destination)
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
-    return render_template("complete.html")
+        return render_template("complete.html")
+    else:
+        return render_template("WrongFile.html")
 
 if __name__ == "__main__":
     app.run(port=4555, debug=True)
