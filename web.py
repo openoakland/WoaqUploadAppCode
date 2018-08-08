@@ -83,7 +83,7 @@ def upload():
         f.close()
 
         with open(finalFile,'r') as fj:
-            data = myfile.read()
+            data = fj.read()
             #Final csv file commit:
             repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
             fi = FileStorage(fj)
