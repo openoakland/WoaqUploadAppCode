@@ -73,7 +73,7 @@ def upload():
         g = Github("c67078bb82f2d570125166f77089f78565caba1d")
         #Get repository
         repo = g.get_user().get_repo('woaq')
-        repo.create_file('/_posts/'+markDownFile,mD,branch='gh-pages')
+        repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date",mD,branch='gh-pages')
 
         #Saves file
         filename = finalFile
