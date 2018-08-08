@@ -72,7 +72,7 @@ def upload():
         #Get authorization code
         g = Github("c67078bb82f2d570125166f77089f78565caba1d")
         #Get repository
-        repo = g.get_user().get_repo('woaq')
+        repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
         repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date",mD,branch='gh-pages')
 
         #Saves file
@@ -83,6 +83,9 @@ def upload():
         f.close()
 
         with open(finalFile,'r') as fj:
+            data = myfile.read()
+            #Example file commit:
+            repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
             fi = FileStorage(fj)
             fi.save(destination)
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
