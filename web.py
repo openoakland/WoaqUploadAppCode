@@ -57,12 +57,22 @@ def upload():
         print(destination)
         f.close()
 
-        mD = open(markDownFile,"w+")
+        """"mD = open(markDownFile,"w+")
         mD.write('--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+str(now.month)+'\nyear: '+str(now.year)+'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---')
         mD.close()
         with open(markDownFile,'r') as fz:
             fk = FileStorage(fz)
-            fk.save(destination)
+            fk.save(destination)"""
+
+        #mD = open(markDownFile,"w+")
+        mD = '--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+str(now.month)+'\nyear: '+str(now.year)+'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---')
+        
+        #Saves markdown file on github
+        #Get authorization code
+        g = Github("c67078bb82f2d570125166f77089f78565caba1d")
+        #Get repository
+        repo = g.get_user().get_repo('woaq')
+        repo.create_file('/_posts/'+markDownFile,mD,branch='gh-pages')
 
         #Saves file
         filename = finalFile
