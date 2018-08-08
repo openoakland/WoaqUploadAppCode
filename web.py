@@ -66,14 +66,14 @@ def upload():
             fk.save(destination)"""
 
         #mD = open(markDownFile,"w+")
-        mD = '--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+str(now.month)+'\nyear: '+str(now.year)+'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+finalFile+'\n---'
+        mD = '--- \ntitle: WOEIP Air Quality 02-2010 \nowner: <a href="https://www.woeip.org/">WOEIP</a>\nlayout: data\nmonth:'+str(now.month)+'\nyear: '+str(now.year)+'\ncategories: WOEIP\nresourceType: shift_by_month\nfileName: '+filename+'\n---'
         
         #Saves markdown file on github
         #Get authorization code
         g = Github("c67078bb82f2d570125166f77089f78565caba1d")
         #Get repository
         repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
-        repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date",mD,branch='gh-pages')
+        repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
 
         #Saves file
         filename = finalFile
@@ -84,7 +84,7 @@ def upload():
 
         with open(finalFile,'r') as fj:
             data = myfile.read()
-            #Example file commit:
+            #Final csv file commit:
             repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
             fi = FileStorage(fj)
             fi.save(destination)
