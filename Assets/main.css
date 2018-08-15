@@ -31,12 +31,12 @@
   font-weight:bold;
 }
 
-ul.post-categories {
+ul {
   margin-left:0px;
   margin-bottom:15px;
 }
 
-li.category {
+li {
   display:inline;
 }
 
@@ -51,6 +51,6 @@ li.previous-link {
   margin-right:15px;
 }
 
-.data-description {
+body {
   padding:30px 0px 0px;
 }
