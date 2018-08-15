@@ -72,24 +72,27 @@ def upload():
         
         #Saves markdown file on github
         #Get authorization code
-        g = Github("c67078bb82f2d570125166f77089f78565caba1d")
-        #Get repository
-        repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
-        repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
+        try:
+            g = Github("c67078bb82f2d570125166f77089f78565caba1d")
+            #Get repository
+            repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
+            repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
+            #Saves file
+            filename = finalFile
+            #Adding the filename to the files folder
+            destination = "/".join([target, filename])
+            print(destination)
+            f.close()
 
-        #Saves file
-        filename = finalFile
-        #Adding the filename to the files folder
-        destination = "/".join([target, filename])
-        print(destination)
-        f.close()
-
-        with open(finalFile,'r') as fj:
-            data = fj.read()
-            #Final csv file commit:
-            repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
-            fi = FileStorage(fj)
-            fi.save(destination)
+            with open(finalFile,'r') as fj:
+                data = fj.read()
+                #Final csv file commit:
+                repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
+                #fi = FileStorage(fj)
+                #fi.save(destination)
+        except Exception as e:
+            return render_template("authWrong.html")
+        
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
         return render_template("complete.html")
