@@ -74,7 +74,7 @@ def upload():
         #Get authorization code
         try:
             #g = Github("c67078bb82f2d570125166f77089f78565caba1d")
-            g = Github("fa98dd052f532abcddba6a45656bc562f94a7c02")
+            g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
             #Get repository
             repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
             repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
