@@ -73,8 +73,9 @@ def upload():
         #Saves markdown file on github
         #Get authorization code
         try:
-            #g = Github("c67078bb82f2d570125166f77089f78565caba1d")
-            g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
+            g = Github("c67078bb82f2d570125166f77089f78565caba1d")
+            
+            #g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
             #Get repository
             repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
             repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
@@ -101,5 +102,6 @@ def upload():
         return render_template("WrongFile.html")
 
 if __name__ == "__main__":
+    print("Using expired github token:"+str(g))
     app.run(port=4555, debug=True)
         
