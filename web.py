@@ -93,6 +93,7 @@ def upload():
                 #fi = FileStorage(fj)
                 #fi.save(destination)
         except Exception as e:
+            print(e)
             return render_template("authWrong.html")
         
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
