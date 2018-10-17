@@ -89,17 +89,21 @@ def upload():
             destination = "/".join([target, filename])
             print(destination)
             f.close()
+            #Commits the optional text file 
+
             try:
                 g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
-
-                if textFile != '':
-                    repo.create_file('/_Posts/'+textFile,"Added a new air quality text data file on "+str(now)+"date",data,branch='gh-pages')
+                with open(finalFile,'r') as fl:
+                    data = fl.read()
+                    if textFile != '':
+                        repo.create_file('/_Posts/'+filename+".txt","Added a new air quality text data file on "+str(now)+"date",data,branch='gh-pages')
             except Exception as e:
                 print(e)
 
             with open(finalFile,'r') as fj:
                 data = fj.read()
                 #Final csv file commit:
+                #This mat 
                 repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
 
                 #fi = FileStorage(fj)
