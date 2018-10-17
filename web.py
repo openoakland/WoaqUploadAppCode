@@ -36,6 +36,8 @@ def upload():
             csvFile = file
         elif filetype == 'log':
             logFile = file
+        elif filetype = 'txt':
+            textFile = file
 
     if csvFile != '' and logFile != '':
         print(csvFile)
@@ -87,11 +89,19 @@ def upload():
             destination = "/".join([target, filename])
             print(destination)
             f.close()
+            try:
+                g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
 
+                if textFile != '':
+                    repo.create_file('/_Posts/'+textFile,"Added a new air quality text data file on "+str(now)+"date",data,branch='gh-pages')
+            except Exception as e:
+                print(e)
+                
             with open(finalFile,'r') as fj:
                 data = fj.read()
                 #Final csv file commit:
                 repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
+
                 #fi = FileStorage(fj)
                 #fi.save(destination)
         except Exception as e:
