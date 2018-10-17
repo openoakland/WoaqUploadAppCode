@@ -36,7 +36,7 @@ def upload():
             csvFile = file
         elif filetype == 'log':
             logFile = file
-        elif filetype = 'txt':
+        elif filetype == 'txt':
             textFile = file
 
     if csvFile != '' and logFile != '':
@@ -96,7 +96,7 @@ def upload():
                     repo.create_file('/_Posts/'+textFile,"Added a new air quality text data file on "+str(now)+"date",data,branch='gh-pages')
             except Exception as e:
                 print(e)
-                
+
             with open(finalFile,'r') as fj:
                 data = fj.read()
                 #Final csv file commit:
