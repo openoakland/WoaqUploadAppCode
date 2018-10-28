@@ -92,7 +92,8 @@ def upload():
             #Commits the optional text file 
 
             try:
-                g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
+                #g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
+                g = Github("a0740516bc41f331e1dfc84ef64cedadd8d35c0e")
                 with open(textFile,'r') as fl:
                     data = fl.read()
                     if textFile != '':
