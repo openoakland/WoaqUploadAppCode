@@ -105,8 +105,8 @@ def upload():
                 #Final csv file commit:
                 #This mat 
                 repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
-                csvFile = repo.get_contents('/_Posts/'+filename)
-                print(csvFile)
+                #csvFile = repo.get_contents('/_Posts/'+filename)
+                #print(csvFile)
                 #fi = FileStorage(fj)
                 #fi.save(destination)
         except Exception as e:
