@@ -83,10 +83,10 @@ class AqGpsJoiner:
         self._aq_data = csv.DictReader(aq_itr, delimiter=',')
 
         self._output_header = True
-        self._gps_datetime:
+        #self._gps_datetime:
         #This does not work, as these variables are not the same. This validates whether the datetime on both files is the same.
-        if self._gps_datetime == aq_start_time:
-            print("This datset is valid")
+        #if self._gps_datetime == aq_start_time:
+        #    print("This datset is valid")
         #Creates File
         #self.createFile()
     def generate_start_datetime(self):
