@@ -109,6 +109,7 @@ def upload():
                 repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
                 csvFile = repo.get_contents('/_Posts/'+filename)
                 print(csvFile)
+                posts = csvFile
                 #fi = FileStorage(fj)
                 #fi.save(destination)
         except Exception as e:
@@ -118,7 +119,7 @@ def upload():
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
         #repo.g
-        return render_template("complete.html",posts=csvFile)
+        return render_template("complete.html",posts=posts)
     else:
         return render_template("WrongFile.html")
 
