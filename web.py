@@ -119,8 +119,11 @@ def upload():
         #GET /repos/:owner/:repo/git/commits/:commit_sha   
     #Load Complete page
         #repo.g
-        print(csvFile)
-        return render_template("complete.html",posts=csvFile)
+        with open(finalFile,'r') as fd:
+                data = fd.read()
+                print(data)
+                csvFile = data
+                return render_template("complete.html",posts=csvFile)
     else:
         return render_template("WrongFile.html")
 
