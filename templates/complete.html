@@ -1,10 +1,72 @@
 <!doctype html>
 <html>
+	    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  	<script src='https://npmcdn.com/csv2geojson@5.0.2/csv2geojson.js'></script>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     
     <body>
-        <h1>Your file has been successfully uploaded</h1>
+        <h1>Your file has been successfully uploaded. Here is a map visualization:</h1>
+          
+<script type="text/javascript">
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlaWphIiwiYSI6ImNqM3FjajEycDAwbmYycW1rZDZ3Y3ZmaDgifQ.gG6EIJvRcdlHGtyaF7vyrw';
+  var map = new mapboxgl.Map({
+     container: 'map', // container id
+     style: 'mapbox://styles/mapbox/streets-v9', // style sheet location
+     center: [-122.288356, 37.813146], // starting position, center of W Oakland
+     zoom: 12 // starting zoom
+  });
+
+  /*$(document).ready(function() {
+      if ("{{page.resourceType}}" == 'shift_by_month') {
+        $.ajax({
+            type: "GET",
+            // Reformat style: use append
+            //Get data from github using github api
+            url: ,
+            dataType: "text",
+            success: function(csvData) {makeGeoJSON(csvData);}
+         });
+      }
+  });*/
+
+  /*map.on('load', function () {
+      map.addLayer({
+          "id": "points",
+          "type": "{{page.geoType}}",
+          "source": {
+              "type": "geojson",
+              "data": csvData
+        }
+     });
+  });*/
+  function makeGeoJSON(csvData) {
+    csv2geojson.csv2geojson(csvData, {
+        latfield: 'lat',
+        lonfield: 'lon',
+        delimiter: ','
+    }, function(err, data) {
+        map.on('load', function () {
+
+            map.addLayer({
+                'id': 'pm',
+                'type': 'symbol',
+                'source': {
+                    'type': 'geojson',
+                    'data': data
+                },
+                'layout': {
+                    "icon-image": "marker-15"
+                },
+                'paint': {}
+            });
+        });
+    });
+  }
+  </script>
     </body>
 </html>
