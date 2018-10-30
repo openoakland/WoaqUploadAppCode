@@ -121,7 +121,7 @@ def upload():
         #repo.g
         with open(finalFile,'r') as fd:
                 data = fd.read()
-                print(data)
+                #print(data)
                 csvFile = data
                 return render_template("complete.html",csvFile=csvFile)
     else:
