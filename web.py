@@ -123,7 +123,7 @@ def upload():
                 data = fd.read()
                 print(data)
                 csvFile = data
-                return render_template("complete.html",posts=csvFile)
+                return render_template("complete.html",csvFile=csvFile)
     else:
         return render_template("WrongFile.html")
 
