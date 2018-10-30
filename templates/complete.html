@@ -30,7 +30,11 @@
 
   
   csvData = {{ csvFile }};
-  makeGeoJSON(csvData);
+
+  function Hello() {
+  	console.log('Hello!');
+  }
+  Hello();
 
   function makeGeoJSON(csvData) {
   	console.log(csvData);
@@ -57,6 +61,8 @@
         });
     });
   }
+  makeGeoJSON(csvData);
+  Hello();
   </script>
     </body>
 </html>
