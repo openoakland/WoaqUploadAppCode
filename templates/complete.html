@@ -11,11 +11,11 @@
     
     <body>
         <h1>Your file has been successfully uploaded. Here is a map visualization:</h1>
-        {% if csvFile %}
+        <!--{% if csvFile %}
 			{{ csvFile }}
 		{% else %}
 			<h1>There is no csvFile</h1>
-		{% endif %}
+		{% endif %}-->
 <script type="text/javascript">
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlaWphIiwiYSI6ImNqM3FjajEycDAwbmYycW1rZDZ3Y3ZmaDgifQ.gG6EIJvRcdlHGtyaF7vyrw';
   var map = new mapboxgl.Map({
@@ -26,14 +26,16 @@
   });
 
   
-  csvData = {{ csvFile }};
+  csvData = {{ csvFile | tojson}};
 
   function makeGeoJSON(csvData) {
+  	console.log(csvData);
     csv2geojson.csv2geojson(csvData, {
         latfield: 'lat',
         lonfield: 'lon',
         delimiter: ','
     }, function(err, data) {
+    	console.log(data);
         map.on('load', function () {
 
             map.addLayer({
