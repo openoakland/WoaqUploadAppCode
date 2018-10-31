@@ -30,13 +30,14 @@
 
   //console.log('Hello!')
   //var csvData = null;
+  //Get csv data from web.py
   csvData = {{ csvFile }};
   console.log('Hello!')
   //function Hello() {
   	//console.log('Hello!');
   //}
   //Hello();
-
+//Creates map after converting csvData to GeoJSON. 
   function makeGeoJSON(csvData) {
   	console.log(csvData);
     csv2geojson.csv2geojson(csvData, {
