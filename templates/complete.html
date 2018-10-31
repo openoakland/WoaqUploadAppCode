@@ -30,7 +30,7 @@
 
   //console.log('Hello!')
   var csvData = null;
-  csvData = String( {{ csvFile }} );
+  //csvData = String( {{ csvFile }} );
 console.log('Hello!')
   function Hello() {
   	console.log('Hello!');
@@ -62,7 +62,7 @@ console.log('Hello!')
         });
     });
   }
-  makeGeoJSON(csvData);
+  makeGeoJSON( {{ csvFile }} );
   Hello();
   </script>
     </body>
