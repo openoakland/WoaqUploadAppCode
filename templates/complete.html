@@ -29,13 +29,13 @@
   });
 
   //console.log('Hello!')
-  var csvData = null;
-  //csvData = String( {{ csvFile }} );
+  //var csvData = null;
+  csvData = {{ csvFile }};
 console.log('Hello!')
-  function Hello() {
-  	console.log('Hello!');
-  }
-  Hello();
+  //function Hello() {
+  	//console.log('Hello!');
+  //}
+  //Hello();
 
   function makeGeoJSON(csvData) {
   	console.log(csvData);
@@ -62,8 +62,8 @@ console.log('Hello!')
         });
     });
   }
-  makeGeoJSON( {{ csvFile }} );
-  Hello();
+  makeGeoJSON(csvData);
+  //Hello();
   </script>
     </body>
 </html>
