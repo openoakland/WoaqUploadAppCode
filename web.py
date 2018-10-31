@@ -81,6 +81,7 @@ def upload():
             #g = Github("a0740516bc41f331e1dfc84ef64cedadd8d35c0e")
             g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
             #For app
+            #Current pygithub version: 1.40, flask 1.0.2
             #g = Github("v1.b6634b8e67d274dfe131b07b9dd3494cd2446d12")
             #Get repository
             repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
