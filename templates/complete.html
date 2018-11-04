@@ -32,7 +32,7 @@
   //var csvData = null;
   //Get csv data from web.py
   //csvData = {{ csvFile }};
-  console.log({{ csvFile|jsonify }})
+  console.log({{ csvFile|safe }})
   //makeGeoJSON({{ csvFile }}|jso)
   //function Hello() {
   	//console.log('Hello!');
