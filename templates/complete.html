@@ -31,7 +31,9 @@
   //console.log('Hello!')
   //var csvData = null;
   //Get csv data from web.py
-  csvData = {{ csvFile|tojson|safe }};
+  print("hello")
+  csvData = {{ csvFile|tojson }};
+  print("hello2")
   //console.log({{ csvFile|tojson|safe }})
   
   //makeGeoJSON({{ csvFile }}|jso)
