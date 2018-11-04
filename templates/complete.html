@@ -42,8 +42,8 @@
     }, function(err, data) {
     	console.log(data);
         map.on('load', function () {
-
-            map.addLayer({
+            map.addSource('apm',data);
+            /*map.addLayer({
                 'id': 'pm',
                 'type': 'symbol',
                 'source': {
@@ -54,7 +54,7 @@
                     "icon-image": "marker-15"
                 },
                 'paint': {}
-            });
+            });*/
         });
     });
   }
