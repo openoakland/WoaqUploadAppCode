@@ -131,7 +131,7 @@ def upload():
         return render_template("WrongFile.html")
 @app.route("/databaseFiles",methods=['POST','GET'])
 def loadDatabase():
-    if (flask.request.method == 'GET'):
+    if (request.method == 'GET'):
         filename = "JoinedAirQualityAndGPSData2018-11-04 18:43:20.905101.csv"
         csvFile = repo.get_contents('/_Posts/'+filename)
         with open(finalFile,'r') as fd:
