@@ -134,9 +134,8 @@ def loadDatabase():
 
     if (request.method == 'GET'):
         filename = "JoinedAirQualityAndGPSData2018-11-04 18:43:20.905101.csv"
-        repo = g.get_user().get_repo('woaq')
         g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
-        repo = 
+        repo = g.get_user().get_repo('woaq')
         csvFile = repo.get_contents('/_Posts/'+filename)
         with open(finalFile,'r') as fd:
             data = fd.read()
