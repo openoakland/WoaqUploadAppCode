@@ -129,16 +129,16 @@ def upload():
                 return render_template("complete.html",csvFile=csvFile)
     else:
         return render_template("WrongFile.html")
-    @app.route("/databaseFiles",methods=['POST','GET'])
-    def loadDatabase():
-        if (flask.request.method == 'GET'):
-            filename = "JoinedAirQualityAndGPSData2018-11-04 18:43:20.905101.csv"
-            csvFile = repo.get_contents('/_Posts/'+filename)
-            with open(finalFile,'r') as fd:
-                        data = fd.read()
-                        #print(data)
-                        csvFile = str(data)
-                        return render_template('complete.html',csvFile=csvFile)
+@app.route("/databaseFiles",methods=['POST','GET'])
+def loadDatabase():
+    if (flask.request.method == 'GET'):
+        filename = "JoinedAirQualityAndGPSData2018-11-04 18:43:20.905101.csv"
+        csvFile = repo.get_contents('/_Posts/'+filename)
+        with open(finalFile,'r') as fd:
+            data = fd.read()
+            #print(data)
+            csvFile = str(data)
+            return render_template('complete.html',csvFile=csvFile)
     
 
 
