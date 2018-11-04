@@ -137,7 +137,6 @@ def loadDatabase():
         g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
         repo = g.get_user().get_repo('woaq')
         csvFileTemp = repo.get_contents('/_Posts/'+filename)
-        csvFileTemp = str(data)
         #return render_template('complete.html',csvFile=csvFile)
         with open(csvFileTemp,'r') as fd:
             data = fd.read()
