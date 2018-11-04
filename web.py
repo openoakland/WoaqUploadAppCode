@@ -136,12 +136,14 @@ def loadDatabase():
         filename = "JoinedAirQualityAndGPSData2018-11-04 18:43:20.905101.csv"
         g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
         repo = g.get_user().get_repo('woaq')
-        csvFileTemp = repo.get_contents('/_Posts/'+filename)
-        with open(csvFileTemp,'r') as fd:
-            data = fd.read()
+        csvFile = repo.get_contents('/_Posts/'+filename)
+        csvFile = str(data)
+        return render_template('complete.html',csvFile=csvFile)
+        #with open(csvFileTemp,'r') as fd:
+        #    data = fd.read()
             #print(data)
-            csvFile = str(data)
-            return render_template('complete.html',csvFile=csvFile)
+        #    csvFile = str(data)
+        #    return render_template('complete.html',csvFile=csvFile)
     
 
 
