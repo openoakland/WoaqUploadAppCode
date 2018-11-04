@@ -13,11 +13,7 @@
     
     <body>
         <h1>Your file has been successfully uploaded. Here is a map visualization:</h1>
-        <!--{% if csvFile %}
-			{{ csvFile }}
-		{% else %}
-			<h1>There is no csvFile</h1>
-		{% endif %}-->
+ 
 <div id='map' style='width: 100%; height: 500px;'></div>
 <script type="text/javascript">
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlaWphIiwiYSI6ImNqM3FjajEycDAwbmYycW1rZDZ3Y3ZmaDgifQ.gG6EIJvRcdlHGtyaF7vyrw';
@@ -28,10 +24,10 @@
      zoom: 12 // starting zoom
   });
 
-  //console.log('Hello!')
+  console.log('Hello!')
   //var csvData = null;
   //Get csv data from web.py
-  print("hello")
+  //print("hello")
   //csvData = {{ csvFile|tojson }};
   //print("hello2")
   //console.log({{ csvFile|tojson|safe }})
