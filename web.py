@@ -85,7 +85,7 @@ def upload():
             #g = Github("v1.b6634b8e67d274dfe131b07b9dd3494cd2446d12")
             #Get repository
             repo = g.get_user().get_repo('woaq')#Need to change repository to main repository
-            repo.create_file('/_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
+            repo.create_file('_posts/'+markDownFile,"Added a new air quality markdown data file on "+str(now)+"date.",mD,branch='gh-pages')
             #Saves file
             filename = finalFile
             #Adding the filename to the files folder
@@ -100,7 +100,7 @@ def upload():
                 with open(textFile,'r') as fl:
                     data = fl.read()
                     if textFile != '':
-                        repo.create_file('/_Posts/'+filename+".txt","Added a new air quality text data file on "+str(now)+"date",data,branch='gh-pages')
+                        repo.create_file('_Posts/'+filename+".txt","Added a new air quality text data file on "+str(now)+"date",data,branch='gh-pages')
             except Exception as e:
                 print(e)
 
@@ -108,7 +108,7 @@ def upload():
                 data = fj.read()
                 #Final csv file commit:
                 #This mat 
-                repo.create_file('/_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
+                repo.create_file('_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
                 #Gets CSV File from github
                 csvFile = repo.get_contents('/_Posts/'+filename)
                 print(csvFile)
