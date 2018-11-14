@@ -109,12 +109,14 @@ def upload():
                 #Final csv file commit:
                 #This mat 
                 repo.create_file('_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
+                print(filename)
                 #Gets CSV File from github
                 #csvFile = repo.get_contents('/_Posts/'+filename)
                 #print(csvFile)
 
                 #fi = FileStorage(fj)
                 #fi.save(destination)
+                print(filename)
         except Exception as e:
             print(e)
             return render_template("authWrong.html")
