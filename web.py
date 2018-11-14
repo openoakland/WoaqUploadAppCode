@@ -110,8 +110,8 @@ def upload():
                 #This mat 
                 repo.create_file('_Posts/'+filename,"Added a new air quality csv data file on "+str(now)+"date",data,branch='gh-pages')
                 #Gets CSV File from github
-                csvFile = repo.get_contents('/_Posts/'+filename)
-                print(csvFile)
+                #csvFile = repo.get_contents('/_Posts/'+filename)
+                #print(csvFile)
 
                 #fi = FileStorage(fj)
                 #fi.save(destination)
@@ -138,7 +138,7 @@ def loadDatabase():
         repo = g.get_user().get_repo('woaq')
         csvFileTemp = repo.get_contents('/_Posts/'+filename)
         #return render_template('complete.html',csvFile=csvFile)
-        with open(csvFileTemp,'r') as fd:
+        with open(csvFileTemp.path,'r') as fd:
             data = fd.read()
             #print(data)
             csvFile = str(data)
