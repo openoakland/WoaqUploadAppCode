@@ -79,7 +79,7 @@ def upload():
             
             #g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
             #g = Github("a0740516bc41f331e1dfc84ef64cedadd8d35c0e")
-            g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
+            g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
             #For app
             #Current pygithub version: 1.40, flask 1.0.2
             #g = Github("v1.b6634b8e67d274dfe131b07b9dd3494cd2446d12")
@@ -97,7 +97,7 @@ def upload():
             try:
                 #g = Github("fe45e3a06969900ef870e3a49adcc051e4172482")
                 #g = Github("a0740516bc41f331e1dfc84ef64cedadd8d35c0e")
-                g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
+                g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
                 with open(textFile,'r') as fl:
                     data = fl.read()
                     if textFile != '':
@@ -137,7 +137,7 @@ def loadDatabase():
 
     if (request.method == 'GET'):
         filename = "JoinedAirQualityAndGPSData2018-11-14 01:55:04.860057.csv"
-        g = Github("76009c34088cb69d7392fc3a6baa963ab0bd4e8d ")
+        g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
         repo = g.get_user().get_repo('woaq')
         csvFileTemp = repo.get_contents('/_Posts/'+filename)
         print(csvFileTemp)
