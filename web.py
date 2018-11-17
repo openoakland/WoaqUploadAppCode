@@ -23,7 +23,7 @@ def index():
     #         contents.extend(repo.get_contents(file_content.path))
     #     else:
     #         print(file_content)
-    return render_template("upload.html")
+    return render_template("home.html",databaseFiles=contents)
 #Runs once file is uploaded
 @app.route("/upload", methods=['POST'])
 def upload():
