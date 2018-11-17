@@ -32,7 +32,7 @@
         <!-- IMPORTANT part of webpage, Error message-->
         <kd style='margin-top:0;margin-left:25%;margin-right:25%;'>
           {%for file in databaseFiles%}
-            <a href = "/databaseFiles">{{file.path}}</a>
+            <a href = "/databaseFiles?param={{file.path}}">{{file.path}}</a>
           {%endfor%}
           
           
