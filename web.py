@@ -13,7 +13,7 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def index():
     g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
     repo = g.get_user().get_repo('woaq')
-    contents = repo.get_contents("/_Posts/")
+    contents = repo.get_contents("")
     print(contents)
     #csvFileTemp = repo.get_contents('/_Posts/'+filename)
     print('CSVFile below:')
