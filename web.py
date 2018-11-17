@@ -11,6 +11,18 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def index():
+    g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
+    repo = g.get_user().get_repo('woaq')
+    contents = repo.get_contents("/_Posts/")
+    print(contents)
+    #csvFileTemp = repo.get_contents('/_Posts/'+filename)
+    print('CSVFile below:')
+    while len(contents) > 1:
+        file_content = contents.pop(0)
+        #if file_content.type == "dir":
+        #    contents.extend(repo.get_contents(file_content.path))
+        #else:
+        print(file_content)
     return render_template("upload.html")
 #Runs once file is uploaded
 @app.route("/upload", methods=['POST'])
@@ -138,12 +150,17 @@ def loadDatabase():
     if (request.method == 'GET'):
         filename = "JoinedAirQualityAndGPSData2018-11-14 01:55:04.860057.csv"
         g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
-        
         repo = g.get_user().get_repo('woaq')
-        contents = repo.get_contents("_Posts/")
+        contents = repo.get_contents("/_Posts/")
         print(contents)
         #csvFileTemp = repo.get_contents('/_Posts/'+filename)
         print('CSVFile below:')
+        while len(contents) > 1:
+            file_content = contents.pop(0)
+            #if file_content.type == "dir":
+            #    contents.extend(repo.get_contents(file_content.path))
+            #else:
+            print(file_content)
         #print(csvFileTemp)
         #return render_template('complete.html',csvFile=csvFile)
         #with open(csvFileTemp,'r') as fd:
