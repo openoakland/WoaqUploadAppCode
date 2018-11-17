@@ -146,28 +146,25 @@ def upload():
         return render_template("WrongFile.html")
 @app.route("/databaseFiles",methods=['POST','GET'])
 def loadDatabase():
-
+    filename = request.args.get('param', '')
+    print(filename)
     if (request.method == 'GET'):
-        filename = "JoinedAirQualityAndGPSData2018-11-14 01:55:04.860057.csv"
+        #filename = "JoinedAirQualityAndGPSData2018-11-14 01:55:04.860057.csv"
         g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
         repo = g.get_user().get_repo('woaq')
-        contents = repo.get_contents("/_Posts/")
+
+        contents = repo.get_contents(filename)
         print(contents)
-        #csvFileTemp = repo.get_contents('/_Posts/'+filename)
+        csvFileTemp = contents
         print('CSVFile below:')
-        while len(contents) > 1:
-            file_content = contents.pop(0)
-            #if file_content.type == "dir":
-            #    contents.extend(repo.get_contents(file_content.path))
-            #else:
-            print(file_content)
-        #print(csvFileTemp)
+   
+        print(csvFileTemp)
         #return render_template('complete.html',csvFile=csvFile)
-        #with open(csvFileTemp,'r') as fd:
-        #    data = fd.read()
-        #    print(data)
-        #    csvFile = str(data)
-            #return render_template('complete.html',csvFile=csvFile)
+        with open(csvFileTemp,'r') as fd:
+            data = fd.read()
+            print(data)
+            csvFile = str(data)
+            return render_template('complete.html',csvFile=csvFile)
     
 
 
