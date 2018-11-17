@@ -140,7 +140,7 @@ def loadDatabase():
         g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
         
         repo = g.get_user().get_repo('woaq')
-        contents = repo.get_contents("")
+        contents = repo.get_contents("_Posts/")
         print(contents)
         #csvFileTemp = repo.get_contents('/_Posts/'+filename)
         print('CSVFile below:')
@@ -150,7 +150,7 @@ def loadDatabase():
         #    data = fd.read()
         #    print(data)
         #    csvFile = str(data)
-        #    return render_template('complete.html',csvFile=csvFile)
+            #return render_template('complete.html',csvFile=csvFile)
     
 
 
