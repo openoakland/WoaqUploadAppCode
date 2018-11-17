@@ -138,16 +138,19 @@ def loadDatabase():
     if (request.method == 'GET'):
         filename = "JoinedAirQualityAndGPSData2018-11-14 01:55:04.860057.csv"
         g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
+        
         repo = g.get_user().get_repo('woaq')
-        csvFileTemp = repo.get_contents('/_Posts/'+filename)
+        contents = repo.get_contents("")
+        print(contents)
+        #csvFileTemp = repo.get_contents('/_Posts/'+filename)
         print('CSVFile below:')
-        print(csvFileTemp)
+        #print(csvFileTemp)
         #return render_template('complete.html',csvFile=csvFile)
-        with open(csvFileTemp,'r') as fd:
-            data = fd.read()
-            print(data)
-            csvFile = str(data)
-            return render_template('complete.html',csvFile=csvFile)
+        #with open(csvFileTemp,'r') as fd:
+        #    data = fd.read()
+        #    print(data)
+        #    csvFile = str(data)
+        #    return render_template('complete.html',csvFile=csvFile)
     
 
 
