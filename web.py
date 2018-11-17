@@ -14,9 +14,9 @@ def index():
     g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
     repo = g.get_user().get_repo('woaq')
     contents = repo.get_contents("_Posts")
-    print(contents)
+    #print(contents)
     #csvFileTemp = repo.get_contents('/_Posts/'+filename)
-    print('CSVFile below:')
+    #print('CSVFile below:')
     # while len(contents) > 1:
     #     file_content = contents.pop(0)
     #     if file_content.path == "_Posts":
