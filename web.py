@@ -4,6 +4,7 @@ from werkzeug.datastructures import FileStorage
 from github import Github
 from joiner_scripts.joiner import AqGpsJoiner
 import datetime
+import base64
 
 app = Flask(__name__)
 
@@ -157,14 +158,15 @@ def loadDatabase():
         print(contents)
         csvFileTemp = contents
         print('CSVFile below:')
-   
+        
         #print(csvFileTemp.content)
         #return render_template('complete.html',csvFile=csvFile)
         #with open(csvFileTemp.content,'r') as fd:
         #    data = fd.read()
         #    print(data)
         #    csvFile = str(data)
-        return render_template('complete.html',csvFile=csvFileTemp.content)
+        csvFileTemp = base64.b64decode(csvFileTemp.content)
+        return render_template('complete.html',csvFile=csvFileTemp)
     
 
 
