@@ -158,13 +158,13 @@ def loadDatabase():
         csvFileTemp = contents
         print('CSVFile below:')
    
-        print(csvFileTemp.content)
+        #print(csvFileTemp.content)
         #return render_template('complete.html',csvFile=csvFile)
-        with open(csvFileTemp.content,'r') as fd:
-            data = fd.read()
-            print(data)
-            csvFile = str(data)
-            return render_template('complete.html',csvFile=csvFile)
+        #with open(csvFileTemp.content,'r') as fd:
+        #    data = fd.read()
+        #    print(data)
+        #    csvFile = str(data)
+        return render_template('complete.html',csvFile=csvFileTemp.content)
     
 
 
