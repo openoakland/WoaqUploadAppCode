@@ -19,10 +19,10 @@ def index():
     print('CSVFile below:')
     while len(contents) > 1:
         file_content = contents.pop(0)
-        #if file_content.type == "dir":
-        #    contents.extend(repo.get_contents(file_content.path))
-        #else:
-        print(file_content)
+        if file_content.type == "dir" and file_content.path == "_Posts":
+            contents.extend(repo.get_contents(file_content.path))
+        else:
+            print(file_content)
     return render_template("upload.html")
 #Runs once file is uploaded
 @app.route("/upload", methods=['POST'])
