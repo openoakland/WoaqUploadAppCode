@@ -26,8 +26,10 @@ def index():
     #         print(file_content)
     return render_template("home.html",databaseFiles=contents)
 #Runs once file is uploaded
-@app.route("/upload", methods=['POST'])
+@app.route("/upload", methods=['POST','GET'])
 def upload():
+    if (request.method == 'GET'):
+        return render_template("upload.html")
     now = datetime.datetime.now()
     csvFile = ''
     logFile = ''

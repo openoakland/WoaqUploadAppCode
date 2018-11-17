@@ -29,10 +29,13 @@
           </ka>
             <hr size=2 width=100%>
         </header>
+
         <!-- IMPORTANT part of webpage, Error message-->
         <kd style='margin-top:0;margin-left:25%;margin-right:25%;'>
+        <a href = "/upload">"Click here to Upload csv data"</a>
           {%for file in databaseFiles%}
             <a href = "/databaseFiles?param={{file.path}}">{{file.path}}</a>
+            <br>
           {%endfor%}
           
           
