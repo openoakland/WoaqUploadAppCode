@@ -13,16 +13,16 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 def index():
     g = Github("fa0dfb5e6103c9bf91cbbcc22e3c1aa5708cbdb4")
     repo = g.get_user().get_repo('woaq')
-    contents = repo.get_contents("")
+    contents = repo.get_contents("_Posts")
     print(contents)
     #csvFileTemp = repo.get_contents('/_Posts/'+filename)
     print('CSVFile below:')
-    while len(contents) > 1:
-        file_content = contents.pop(0)
-        if file_content.type == "dir" and file_content.path == "_Posts":
-            contents.extend(repo.get_contents(file_content.path))
-        else:
-            print(file_content)
+    # while len(contents) > 1:
+    #     file_content = contents.pop(0)
+    #     if file_content.path == "_Posts":
+    #         contents.extend(repo.get_contents(file_content.path))
+    #     else:
+    #         print(file_content)
     return render_template("upload.html")
 #Runs once file is uploaded
 @app.route("/upload", methods=['POST'])
