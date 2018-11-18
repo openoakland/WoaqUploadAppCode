@@ -20,7 +20,9 @@
  
 <div id='map' style='width: 100%; height: 500px;'></div>
 <script type="text/javascript">
+  //Mapbox access token
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlaWphIiwiYSI6ImNqM3FjajEycDAwbmYycW1rZDZ3Y3ZmaDgifQ.gG6EIJvRcdlHGtyaF7vyrw';
+  //Creates a new mapbox and stores it in variable map (doesn't create map itself)
   var map = new mapboxgl.Map({
      container: 'map', // container id
      style: 'mapbox://styles/mapbox/streets-v9', // style sheet location
@@ -28,15 +30,10 @@
      zoom: 15.8 // starting zoom
   });
 
-  console.log('Hello!');
-  //var csvData = null;
-  //Get csv data from web.py
   csvData = {{ csvFile|tojson }};
-  //console.log("hello2");
-  //console.log({{ csvFile|tojson|safe }});
+
 //Creates map after converting csvData to GeoJSON. 
   function makeGeoJSON(csvData) {
-  	console.log(csvData);
     csv2geojson.csv2geojson(csvData, {
         latfield: 'lat',
         lonfield: 'lon',
@@ -45,6 +42,7 @@
     	console.log(data);
         map.on('load', function () {
             //map.addSource('apm',data);
+            //Creates map by adding point pm layer 
             map.addLayer({
                 'id': 'pm',
                 'type': 'symbol',
@@ -61,7 +59,7 @@
     });
   }
   makeGeoJSON(csvData);
-  //Hello();
+
   </script>
   
     
