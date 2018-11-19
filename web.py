@@ -11,8 +11,10 @@ app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 #Variables
+
 g = Github("60f7e5365230f591fd5f04ecef232d6ddb0d70cb")
 repo = g.get_user().get_repo('woaq')
+
 
 @app.route('/')
 def index():
