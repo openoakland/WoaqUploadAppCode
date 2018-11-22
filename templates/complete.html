@@ -1,10 +1,66 @@
-<!doctype html>
-<html>
-    <head>
+{% extends 'base.html' %}
+
+  
+{% block content %} 
+	    <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+
+  	<script src='https://npmcdn.com/csv2geojson@5.0.2/csv2geojson.js'></script>
+    <head>  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     
-    <body>
-        <h1>Your file has been successfully uploaded</h1>
-    </body>
-</html>
+    
+        <h1>Your file has been successfully uploaded. Here is a map visualization:</h1>
+ 
+<div id='map' style='width: 100%; height: 500px;'></div>
+<script type="text/javascript">
+  //Mapbox access token
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJlaWphIiwiYSI6ImNqM3FjajEycDAwbmYycW1rZDZ3Y3ZmaDgifQ.gG6EIJvRcdlHGtyaF7vyrw';
+  //Creates a new mapbox and stores it in variable map (doesn't create map itself)
+  var map = new mapboxgl.Map({
+     container: 'map', // container id
+     style: 'mapbox://styles/mapbox/streets-v9', // style sheet location
+     center: [-122.288356, 37.813146], // starting position, center of W Oakland
+     zoom: 15.8 // starting zoom
+  });
+
+  csvData = {{ csvFile|tojson }};
+
+//Creates map after converting csvData to GeoJSON. 
+  function makeGeoJSON(csvData) {
+    csv2geojson.csv2geojson(csvData, {
+        latfield: 'lat',
+        lonfield: 'lon',
+        delimiter: ','
+    }, function(err, data) {
+    	console.log(data);
+        map.on('load', function () {
+            //map.addSource('apm',data);
+            //Creates map by adding point pm layer 
+            map.addLayer({
+                'id': 'pm',
+                'type': 'symbol',
+                'source': {
+                    'type': 'geojson',
+                    'data': data
+                },
+                'layout': {
+                    "icon-image": "marker-15"
+                },
+                'paint': {}
+            });
+        });
+    });
+  }
+  makeGeoJSON(csvData);
+
+  </script>
+  
+    
+{% endblock %}

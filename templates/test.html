@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"> 
+    <style type="text/css">
+        body {
+            margin: auto;
+  			width: 50%;
+        }
+        header {
+
+        }
+
+
+
+    </style>
+    <body>
+
+    	<h1>Upload Air Quality Data</h1>
+    	<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" multiple>
+            <input type="submit" value="Upload">
+            
+        </form>
+
+    </body>
+</html>

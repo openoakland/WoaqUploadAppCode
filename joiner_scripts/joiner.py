@@ -74,6 +74,7 @@ class AqGpsJoiner:
             self._gps_last_lat = self._gps_lat
             self._gps_last_lon = self._gps_lon
             gps = self._parse_next_gps()
+            #Here is where datetime from GPS File is located
             self._gps_datetime = utc.normalize(utc.localize(datetime.combine(gps.datestamp, gps.timestamp)))
             self._gps_lat = gps.latitude
             self._gps_lon = gps.longitude
@@ -82,6 +83,10 @@ class AqGpsJoiner:
         self._aq_data = csv.DictReader(aq_itr, delimiter=',')
 
         self._output_header = True
+        #self._gps_datetime:
+        #This does not work, as these variables are not the same. This validates whether the datetime on both files is the same.
+        #if self._gps_datetime == aq_start_time:
+        #    print("This datset is valid")
         #Creates File
         #self.createFile()
     def generate_start_datetime(self):
